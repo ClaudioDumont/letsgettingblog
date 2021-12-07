@@ -68,8 +68,7 @@
         }
     }
 
-    &:nth-child(4n) {
-        grid-column: span 2; /* Spans two columns */
+    &:nth-child(2n) {
         grid-row: span 2; /* Spans two rows */
     }
 }
@@ -95,6 +94,12 @@
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: 736px) {
+        flex-direction: column;
+        gap: 35px;
+        margin-bottom: 1em;;
+    }
+
     &__logo {
         width: 250px;
     }
@@ -103,5 +108,14 @@
         font-weight: 900;
         color: #009EAD;
         font-size: 2.5em;
+
+        @media screen and (max-width: 736px) {
+            color: #213F66;
+            font-size: 1.8em;
+            background: #fff;
+            border-radius: 15px;
+            padding: 5px 45px;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
+        }
     }
 }
