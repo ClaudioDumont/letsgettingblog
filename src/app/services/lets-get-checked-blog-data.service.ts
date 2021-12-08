@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ModuleWithProviders } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import * as models from './../models/export';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +13,28 @@ export class LetsGetCheckedBlogDataService {
     private http: HttpClient
   ) { }
 
-  public getAllPostsData() {
+  public getAllPostsData(): Observable<models.LetsGetCheckedBlogPost[]> {
     let url = `http://localhost:9000/posts/`;
         return this.http
-              .get(url)
+              .get<models.LetsGetCheckedBlogPost[]>(url)
               .pipe(
                 catchError(this.handleError)
               );
   }
 
-  public getSinglePostData(id:number) {
+  public getSinglePostData(id:number): Observable<models.LetsGetCheckedBlogPost> {
     let url = `http://localhost:9000/posts/${id}`;
         return this.http
-              .get(url)
+              .get<models.LetsGetCheckedBlogPost>(url)
               .pipe(
                 catchError(this.handleError)
               );
   }
 
-  public getAllCommentsSinglePostData(id:number) {
+  public getAllCommentsSinglePostData(id:number):Observable<models.LetsGetCheckedBlogPostComments> {
     let url = `http://localhost:9000/posts/${id}/comments`;
         return this.http
-              .get(url)
+              .get<models.LetsGetCheckedBlogPostComments>(url)
               .pipe(
                 catchError(this.handleError)
               );
