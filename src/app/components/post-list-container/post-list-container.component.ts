@@ -1,6 +1,6 @@
 import { Component, ModuleWithProviders, OnInit } from '@angular/core';
 import { LetsGetCheckedBlogDataService } from 'src/app/services/lets-get-checked-blog-data.service';
-import * as models from './../../models/export';
+import * as models from '../../models/export';
 
 @Component({
   selector: 'app-post-list-container',
@@ -13,7 +13,7 @@ export class PostListContainerComponent implements OnInit {
 
 
   constructor(
-    private blogData: LetsGetCheckedBlogDataService
+    private blogData: LetsGetCheckedBlogDataService,
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +32,10 @@ export class PostListContainerComponent implements OnInit {
     this.blogData.getSinglePostData(postId).subscribe(res => {
       console.log('singlePostData: ', res);
     });
+
+    this.blogData.getAllCommentsSinglePostData(postId).subscribe(res => {
+      console.log('singlePostComentData: ', res);
+    })
   }
 
 }

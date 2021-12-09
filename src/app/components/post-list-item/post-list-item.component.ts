@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import * as models from './../../models/export';
-
+import * as models from '../../models/export';
 @Component({
   selector: 'app-post-list-item',
   templateUrl: './post-list-item.component.html',
