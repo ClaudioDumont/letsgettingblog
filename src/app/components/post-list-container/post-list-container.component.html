@@ -1,0 +1,7 @@
+<div class="main-container">
+    <app-post-list-item *ngFor="let postItem of letsGetCheckedBlogData" 
+                        [postItem]='postItem'
+                        (selectedPostToView)="onSelectedPostToView($event)"
+                        class="main-container__item">
+    </app-post-list-item>
+</div>

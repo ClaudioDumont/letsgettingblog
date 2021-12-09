@@ -1,0 +1,13 @@
+.main-container {
+    width: 90vw;
+    max-width: 1340px;
+    min-height: 90vh;
+    margin-bottom: 3em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 1.5rem;
+
+    &__item:nth-child(2n) {
+        grid-row: span 2; /* Spans two rows */
+    }
+}

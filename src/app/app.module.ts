@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LetsGetCheckedBlogDataService } from './services/lets-get-checked-blog-data.service';
+import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
+import { PostListContainerComponent } from './components/post-list-container/post-list-container.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostListItemComponent,
+    PostListContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +23,10 @@ import { LetsGetCheckedBlogDataService } from './services/lets-get-checked-blog-
   providers: [
     LetsGetCheckedBlogDataService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    PostListItemComponent,
+    PostListContainerComponent
+  ]
 })
 export class AppModule { }
