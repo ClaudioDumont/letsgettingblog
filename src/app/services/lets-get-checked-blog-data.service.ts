@@ -31,10 +31,10 @@ export class LetsGetCheckedBlogDataService {
               );
   }
 
-  public getAllCommentsSinglePostData(id:number):Observable<models.LetsGetCheckedBlogPostComments> {
+  public getAllCommentsSinglePostData(id:number):Observable<models.LetsGetCheckedBlogPostComments[]> {
     let url = `http://localhost:9000/posts/${id}/comments`;
         return this.http
-              .get<models.LetsGetCheckedBlogPostComments>(url)
+              .get<models.LetsGetCheckedBlogPostComments[]>(url)
               .pipe(
                 catchError(this.handleError)
               );

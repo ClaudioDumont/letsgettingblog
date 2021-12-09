@@ -1,3 +1,40 @@
 <div class="main-container">
-    <p>post-list-item-detail works!</p>
+    <div class="post-item">
+        <div class="post-item__publish-date">
+            {{postItemDetail.publish_date}}
+        </div>
+    
+        <h2 class="post-item__title">{{postItemDetail.title}}</h2>
+        <h3 class="post-item__author">Author: {{postItemDetail.author}}</h3>
+    
+        <div class="post-item__description" [innerHTML]="postItemDetail.content"></div>
+        
+        <div class="slug-container"> 
+            <div class="slug-container__item">
+            {{postItemDetail.slug}}
+            </div>
+        </div>
+        
+        .
+        <h2>Post Comments</h2>
+        <div class="post-item__comments">
+
+            <div class="post-item__comments__item" *ngFor="let commentItem of postItemDetailComments">
+                <div>
+                    {{commentItem.content}}
+                </div>
+                <div>
+                    {{commentItem.date}}
+                   
+                </div>
+                <div>
+                    {{commentItem.user}}
+                </div>
+
+            </div>
+
+        </div>
+
+    
+    </div> 
 </div>

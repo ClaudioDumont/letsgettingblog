@@ -1,4 +1,5 @@
 import { Component, ModuleWithProviders, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { LetsGetCheckedBlogDataService } from 'src/app/services/lets-get-checked-blog-data.service';
 import * as models from '../../models/export';
 
@@ -14,6 +15,7 @@ export class PostListContainerComponent implements OnInit {
 
   constructor(
     private blogData: LetsGetCheckedBlogDataService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,13 +31,7 @@ export class PostListContainerComponent implements OnInit {
 
 
   public onSelectedPostToView(postId: number) {
-    this.blogData.getSinglePostData(postId).subscribe(res => {
-      console.log('singlePostData: ', res);
-    });
-
-    this.blogData.getAllCommentsSinglePostData(postId).subscribe(res => {
-      console.log('singlePostComentData: ', res);
-    })
+    this.router.navigate(['postDetail', postId]);
   }
 
 }

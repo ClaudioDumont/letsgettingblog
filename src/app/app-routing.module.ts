@@ -5,7 +5,7 @@ import { PostListItemDetailComponent } from './components/post-list-item-detail/
 
 const routes: Routes = [
   {
-    path: 'postDetail',
+    path: 'postDetail/:postId',
     component: PostListItemDetailComponent
   },
   {
