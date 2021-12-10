@@ -12,6 +12,29 @@
     display: flex;
     flex-direction: column;
 
+    &__cta-home {
+        background: #213F66;
+        border: none;
+        color: #FFF;
+        font-weight: 900;
+        text-transform: uppercase;
+        padding: 5px 20px;
+        position: absolute;
+        top: -28px;
+        left: 15px;
+        border-radius: 15px 15px 0 0;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background: #009EAD;
+            color: #213F66;
+            text-shadow: 0 0 5px rgba(255,255,255, .7);
+            padding-bottom: 8px;
+            padding-top: 8px;
+            top: -35px;
+        }
+    }
 
     &__publish-date {
         position: absolute;
@@ -47,7 +70,7 @@
 
     &__container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
         grid-gap: 1.5rem;
         
         &__item {

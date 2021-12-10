@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LetsGetCheckedBlogDataService } from 'src/app/services/lets-get-checked-blog-data.service';
 import * as models from '../../models/export';
 
@@ -15,6 +15,7 @@ export class PostListItemDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private blogData: LetsGetCheckedBlogDataService
   ) {
       this.postItemDetail = {
@@ -44,6 +45,10 @@ export class PostListItemDetailComponent implements OnInit {
 
       console.log(this.postItemDetailComments);
     });
+  }
+
+  public backToHome() {
+    this.router.navigate(['']);
   }
 
 }
