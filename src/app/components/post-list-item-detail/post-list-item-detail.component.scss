@@ -1,3 +1,7 @@
+.main-container {
+    grid-template-columns: auto;
+}
+
 .post-item {
     background: #fff;
     border-radius: 15px;
@@ -20,25 +24,6 @@
         font-weight: 900;
         font-size: .9em;
     }
-
-    &__title {
-        color: #213F66;
-        font-size: 2.5em;
-        font-weight: 900;
-    }
-
-    &__description {
-        font-size: 16px;
-        margin: .5em 0 1em;
-        font-weight: 400;
-
-    }
-
-    &__author {
-        color: #009EAD;
-        margin: .2em 0;
-        font-weight: 600;
-    }
 }
 
 .slug-container {
@@ -52,5 +37,35 @@
         color: #fff;
         font-weight: 600;
         background: #009EAD;
+    }
+}
+
+.post-comments {
+    &__title {
+        margin-bottom: .5em;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-gap: 1.5rem;
+        
+        &__item {
+            padding: 15px;
+            line-height: 25px;
+            background: url(../../../assets/quote.svg) no-repeat right -20px top -30px #fff;
+            background-size: 110px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, .1);
+            border-radius: 10px;
+        
+            &__content {
+                font-style: italic;
+            }
+
+            &__date, 
+            &__user {
+                font-weight: 600;
+            }
+        }
     }
 }

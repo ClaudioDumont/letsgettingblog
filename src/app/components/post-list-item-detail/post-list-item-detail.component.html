@@ -14,27 +14,25 @@
             {{postItemDetail.slug}}
             </div>
         </div>
-        
-        .
-        <h2>Post Comments</h2>
-        <div class="post-item__comments">
+    </div>
 
-            <div class="post-item__comments__item" *ngFor="let commentItem of postItemDetailComments">
-                <div>
+    <div class="post-comments" *ngIf="postItemDetailComments.length > 0">
+        <h2 class="post-comments__title">Post Comments</h2>
+
+        <div class="post-comments__container">
+    
+            <div class="post-comments__container__item" *ngFor="let commentItem of postItemDetailComments">
+                <div class="post-comments__container__item__content">
                     {{commentItem.content}}
                 </div>
-                <div>
+                <div class="post-comments__container__item__date">
                     {{commentItem.date}}
-                   
                 </div>
-                <div>
+                <div class="post-comments__container__item__user">
                     {{commentItem.user}}
                 </div>
-
-            </div>
-
-        </div>
-
     
-    </div> 
+            </div>
+        </div>
+    </div>
 </div>

@@ -21,23 +21,10 @@
         font-size: .9em;
     }
 
-    &__title {
-        color: #213F66;
-        font-size: 2.5em;
-        font-weight: 900;
-    }
-
     &__description {
         font-size: 16px;
         margin: .5em 0 1em;
         font-weight: 400;
-
-    }
-
-    &__author {
-        color: #009EAD;
-        margin: .2em 0;
-        font-weight: 600;
     }
 
     &__cta-button {
@@ -59,19 +46,5 @@
             padding-right: 55px;
             padding-left: 55px;
         }
-    }
-}
-
-.slug-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-
-    &__item {
-        padding: 5px;
-        border-radius: 5px;
-        color: #fff;
-        font-weight: 600;
-        background: #009EAD;
     }
 }

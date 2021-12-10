@@ -20,6 +20,20 @@ h1, h2, h3 {
     padding: 0;
 }
 
+h1, h2 {
+    color: #213F66;
+}
+
+h3 {
+    color: #009EAD; 
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: 900;
+}
+
 * {
     box-sizing: border-box;
 }
