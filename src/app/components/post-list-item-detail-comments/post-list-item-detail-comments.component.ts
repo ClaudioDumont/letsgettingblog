@@ -30,7 +30,6 @@ export class PostListItemDetailCommentsComponent implements OnInit {
           commentary: new FormControl(this.commentary, [Validators.required]),
         }
       )
-    
   }
 
   ngOnInit(): void {
@@ -58,6 +57,7 @@ export class PostListItemDetailCommentsComponent implements OnInit {
     }
 
     this.blogData.createNewCommentInSinglePost(id, comment);
+
   }
 
   public isControlInvalid(fieldName: string) {

@@ -1,7 +1,7 @@
-import { Injectable, ModuleWithProviders } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import * as models from './../models/export';
 import { Router } from '@angular/router';
 
@@ -42,8 +42,6 @@ export class LetsGetCheckedBlogDataService {
                 catchError(this.handleError)
               );
   }
-
-  
 
   public createNewCommentInSinglePost(id:number, comment:models.LetsGetCheckedBlogPostComments ):Observable<models.LetsGetCheckedBlogPostComments> {
     const url = `http://localhost:9000/posts/${id}/comments`;

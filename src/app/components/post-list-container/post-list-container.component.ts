@@ -20,7 +20,6 @@ export class PostListContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogData.getAllPostsData().subscribe(res => {
-
       res.sort( (a, b) => {
         return <any>new Date(b.publish_date) - <any>new Date(a.publish_date);
       })

@@ -12,13 +12,13 @@
         
             <div class="post-item__description" [innerHTML]="postItemDetail.content"></div>
             
-            <div class="slug-container" *ngIf="!!postItemDetail.slug"> 
+            <div class="slug-container"> 
                 <div class="slug-container__item">
                 {{postItemDetail.slug}}
                 </div>
             </div>        
         </div>
-        <app-post-list-item-detail-comments ></app-post-list-item-detail-comments>
+        <app-post-list-item-detail-comments></app-post-list-item-detail-comments>
     </div>
 </ng-container>
 <ng-template #elseTemplate>

@@ -1,22 +1,26 @@
 <div class="post-comments">
-    <h2 class="post-comments__title" 
-        *ngIf="postItemDetailComments.length > 0">
-        Post Comments
-    </h2>
 
-    <div class="post-comments__container" *ngIf="postItemDetailComments.length > 0">
-        <div class="post-comments__container__item"  *ngFor="let commentItem of postItemDetailComments">
-            <div class="post-comments__container__item__content">
-                {{commentItem.content}}
-            </div>
-            <div class="post-comments__container__item__date">
-                {{commentItem.date}}
-            </div>
-            <div class="post-comments__container__item__user">
-                {{commentItem.user}}
+    <ng-container *ngIf="postItemDetailComments.length > 0">
+        <h2 class="post-comments__title" >
+            Post Comments
+        </h2>
+    
+        <div class="post-comments__container">
+            <div class="post-comments__container__item"  *ngFor="let commentItem of postItemDetailComments">
+                <div class="post-comments__container__item__content">
+                    {{commentItem.content}}
+                </div>
+                <div class="post-comments__container__item__date">
+                    {{commentItem.date}}
+                </div>
+                <div class="post-comments__container__item__user">
+                    {{commentItem.user}}
+                </div>
             </div>
         </div>
-    </div>
+
+    </ng-container>
+    
 
     <h2 class="post-comments__title">Add New Comments</h2>
         <form [formGroup]="formComments" class="post-comments__add-container">

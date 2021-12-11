@@ -13,9 +13,14 @@ const routes: Routes = [
     path: '',
     component: PostListContainerComponent
   },
-  {path: 'not-found' , component: WrongRouteComponent},
-  {path: '**' , redirectTo: '/not-found'},
-
+  {
+    path: 'not-found',
+    component: WrongRouteComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/not-found'
+  }
 ];
 
 @NgModule({
