@@ -10,7 +10,8 @@ import { LetsGetCheckedBlogDataService } from './services/lets-get-checked-blog-
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
 import { PostListContainerComponent } from './components/post-list-container/post-list-container.component';
 import { PostListItemDetailComponent } from './components/post-list-item-detail/post-list-item-detail.component';
-import { PostListItemDetailCommentsComponent } from './components/post-list-item-detail-comments/post-list-item-detail-comments.component'; 
+import { PostListItemDetailCommentsComponent } from './components/post-list-item-detail-comments/post-list-item-detail-comments.component';
+import { WrongRouteComponent } from './components/wrong-route/wrong-route.component'; 
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PostListItemDetailCommentsComponent } from './components/post-list-item
     PostListItemComponent,
     PostListContainerComponent,
     PostListItemDetailComponent,
-    PostListItemDetailCommentsComponent
+    PostListItemDetailCommentsComponent,
+    WrongRouteComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { PostListItemDetailCommentsComponent } from './components/post-list-item
     PostListItemComponent,
     PostListContainerComponent,
     PostListItemDetailComponent,
-    PostListItemDetailCommentsComponent
+    PostListItemDetailCommentsComponent,
+    WrongRouteComponent
   ]
 })
 export class AppModule { }

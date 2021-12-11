@@ -1,6 +1,6 @@
-import { Component, ModuleWithProviders, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { LetsGetCheckedBlogDataService } from 'src/app/services/lets-get-checked-blog-data.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LetsGetCheckedBlogDataService } from '../../services/lets-get-checked-blog-data.service';
 import * as models from '../../models/export';
 
 @Component({

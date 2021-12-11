@@ -1,25 +1,27 @@
-<div class="main-container">
-    <div class="post-item">
-
-        <button class="post-item__cta-home" (click)="backToHome()">Back to Home</button>
-
-        <div class="post-item__publish-date">
-            {{postItemDetail.publish_date}}
-        </div>
+<ng-container *ngIf="!!postItemDetail; else elseTemplate">
+    <div class="main-container">
+        <div class="post-item base-container">
+            <button class="post-item__cta-home" (click)="backToHome()">Back to List</button>
     
-        <h2 class="post-item__title">{{postItemDetail.title}}</h2>
-        <h3 class="post-item__author">Author: {{postItemDetail.author}}</h3>
-    
-        <div class="post-item__description" [innerHTML]="postItemDetail.content"></div>
-        
-        <div class="slug-container"> 
-            <div class="slug-container__item">
-            {{postItemDetail.slug}}
+            <div class="post-item__publish-date">
+                {{postItemDetail.publish_date}}
             </div>
+        
+            <h2 class="post-item__title">{{postItemDetail.title}}</h2>
+            <h3 class="post-item__author">Author: {{postItemDetail.author}}</h3>
+        
+            <div class="post-item__description" [innerHTML]="postItemDetail.content"></div>
+            
+            <div class="slug-container" *ngIf="!!postItemDetail.slug"> 
+                <div class="slug-container__item">
+                {{postItemDetail.slug}}
+                </div>
+            </div>        
         </div>
+        <app-post-list-item-detail-comments ></app-post-list-item-detail-comments>
     </div>
+</ng-container>
+<ng-template #elseTemplate>
+    <app-wrong-route></app-wrong-route>
+</ng-template>
 
-    <app-post-list-item-detail-comments></app-post-list-item-detail-comments>
-
-    
-</div>

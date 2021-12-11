@@ -44,24 +44,20 @@ export class PostListItemDetailCommentsComponent implements OnInit {
   }
 
   private getLastCommentId() {
-    return this.postItemDetailComments.reduce((acc, item) => acc = acc > item.id ? acc : item.id, 0);
+    return this.postItemDetailComments.reduce((acc, item) => acc = acc > item.id ? acc : item.id, 0) + 1;
   }
 
   public addCommentToPost(id:number) {
     const comment = {
       content: this.formComments.get('commentary')?.value,
       date: String(new Date().getDate),
-      id: this.getLastCommentId() + 1,
+      id: this.getLastCommentId(),
       parent_id: null,
       postId: id,
       user: this.formComments.get('user')?.value
     }
 
-    this.blogData.createNewCommentInSinglePost(id, comment );
-
-    console.log(id, comment);
-
-    this.getCommentsData();
+    this.blogData.createNewCommentInSinglePost(id, comment);
   }
 
   public isControlInvalid(fieldName: string) {

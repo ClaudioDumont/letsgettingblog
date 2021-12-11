@@ -10,7 +10,7 @@ import * as models from '../../models/export';
 })
 export class PostListItemDetailComponent implements OnInit {
 
-  public postItemDetail: models.LetsGetCheckedBlogPost;
+  public postItemDetail: models.LetsGetCheckedBlogPost | null;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,8 +26,8 @@ export class PostListItemDetailComponent implements OnInit {
         slug: '',
         title: ''
       }
-   }
-
+    }
+    
   ngOnInit(): void {
     this.getPostData();
   }
@@ -36,8 +36,10 @@ export class PostListItemDetailComponent implements OnInit {
     const postId = this.route.snapshot.params.postId;
     
     this.blogData.getSinglePostData(postId).subscribe(res => {
-      console.log('singlePostData: ', res);
-      this.postItemDetail = res;
+        this.postItemDetail = res;
+    }, error => {
+      console.log('Error: ', error)
+      this.postItemDetail = null;
     });
   }
 
