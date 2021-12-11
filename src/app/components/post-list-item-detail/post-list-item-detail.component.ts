@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LetsGetCheckedBlogDataService } from 'src/app/services/lets-get-checked-blog-data.service';
+import { LetsGetCheckedBlogDataService } from '../../services/lets-get-checked-blog-data.service';
 import * as models from '../../models/export';
 
 @Component({
@@ -11,7 +11,6 @@ import * as models from '../../models/export';
 export class PostListItemDetailComponent implements OnInit {
 
   public postItemDetail: models.LetsGetCheckedBlogPost;
-  public postItemDetailComments: models.LetsGetCheckedBlogPostComments[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,25 +29,19 @@ export class PostListItemDetailComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getPostData();
+  }
 
+  private getPostData():void {
     const postId = this.route.snapshot.params.postId;
     
     this.blogData.getSinglePostData(postId).subscribe(res => {
       console.log('singlePostData: ', res);
       this.postItemDetail = res;
     });
-
-    this.blogData.getAllCommentsSinglePostData(postId).subscribe(res => {
-      console.log('singlePostComentData: ', res);
-
-      this.postItemDetailComments = res;
-
-      console.log(this.postItemDetailComments);
-    });
   }
 
   public backToHome() {
     this.router.navigate(['']);
   }
-
 }

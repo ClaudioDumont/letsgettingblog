@@ -1,7 +1,7 @@
 import { Injectable, ModuleWithProviders } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import * as models from './../models/export';
 
 @Injectable({
@@ -39,6 +39,24 @@ export class LetsGetCheckedBlogDataService {
                 catchError(this.handleError)
               );
   }
+
+  
+
+  public createNewCommentInSinglePost(id:number, comment:models.LetsGetCheckedBlogPostComments ):Observable<models.LetsGetCheckedBlogPostComments> {
+    const url = `http://localhost:9000/posts/${id}/comments`;
+
+    const httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+
+    return this.http
+          .post<models.LetsGetCheckedBlogPostComments>(url, comment, {headers: httpHeaders})
+          .pipe(
+            catchError(this.handleError)
+          );
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
