@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import * as models from './../models/export';
-import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -12,8 +11,7 @@ import { Router } from '@angular/router';
 export class LetsGetCheckedBlogDataService {
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
   ) { }
 
   public getAllPostsData(): Observable<models.LetsGetCheckedBlogPost[]> {

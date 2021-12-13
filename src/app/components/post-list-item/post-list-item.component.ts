@@ -11,7 +11,6 @@ export class PostListItemComponent implements OnInit {
   @Output() public selectedPostToView = new EventEmitter<number>();
 
   constructor() {
-
     this.postItem = {
       author: '',
       content: '',
@@ -21,7 +20,6 @@ export class PostListItemComponent implements OnInit {
       slug: '',
       title: ''
     }
-
    }
 
   ngOnInit(): void {
