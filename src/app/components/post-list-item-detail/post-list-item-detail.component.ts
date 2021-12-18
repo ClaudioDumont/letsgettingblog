@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class PostListItemDetailComponent implements OnInit, OnDestroy {
 
   public postItemDetail: models.LetsGetCheckedBlogPost | null;
-  private subscriptionPostData: Subscription = new Subscription;
+  private subscriptionPostData$: Subscription = new Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,13 +35,13 @@ export class PostListItemDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptionPostData.unsubscribe();
+    this.subscriptionPostData$.unsubscribe();
   }
 
   private getPostData():void {
     const postId = this.route.snapshot.params.postId;
     
-    this.subscriptionPostData = this.blogData.getSinglePostData(postId).subscribe(res => {
+    this.subscriptionPostData$ = this.blogData.getSinglePostData(postId).subscribe(res => {
         this.postItemDetail = res;
     }, error => {
       console.log('Error: ', error)

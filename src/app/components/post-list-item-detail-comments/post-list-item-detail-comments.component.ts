@@ -17,8 +17,8 @@ export class PostListItemDetailCommentsComponent implements OnInit, OnDestroy {
   public user: string = '';
   public commentary: string = '';
   public formComments: FormGroup;
-  private subscriptionCommentsData: Subscription = new Subscription;
-  private subscriptionPostComment: Subscription = new Subscription;
+  private subscriptionCommentsData$: Subscription = new Subscription;
+  private subscriptionPostComment$: Subscription = new Subscription;
 
   constructor(
       private route: ActivatedRoute,
@@ -42,12 +42,12 @@ export class PostListItemDetailCommentsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptionPostComment.unsubscribe();
-    this.subscriptionCommentsData.unsubscribe();
+    this.subscriptionPostComment$.unsubscribe();
+    this.subscriptionCommentsData$.unsubscribe();
   }
 
   private getCommentsData() {
-   this.subscriptionCommentsData = this.blogData.getAllCommentsSinglePostData(this.postId).subscribe(res => {
+   this.subscriptionCommentsData$ = this.blogData.getAllCommentsSinglePostData(this.postId).subscribe(res => {
       this.postItemDetailComments = res;
     });
   }
@@ -64,7 +64,7 @@ export class PostListItemDetailCommentsComponent implements OnInit, OnDestroy {
       user: !!this.formComments.get('user')?.value ? this.formComments.get('user')?.value : 'Anonymous User'
     }
     
-    this.subscriptionPostComment = this.blogData.createNewCommentInSinglePost(id, comment).subscribe((response) => {
+    this.subscriptionPostComment$ = this.blogData.createNewCommentInSinglePost(id, comment).subscribe((response) => {
       if(!!response) {
         this.getCommentsData();
         this.formComments.reset();

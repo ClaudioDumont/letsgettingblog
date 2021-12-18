@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class PostListContainerComponent implements OnInit, OnDestroy {
 
   public letsGetCheckedBlogData: models.LetsGetCheckedBlogPost[] = [];
-  private subscriptionBlogData: Subscription = new Subscription;
+  private subscriptionBlogData$: Subscription = new Subscription;
 
   constructor(
     private blogData: LetsGetCheckedBlogDataService,
@@ -21,7 +21,7 @@ export class PostListContainerComponent implements OnInit, OnDestroy {
 
   
   ngOnInit(): void {
-    this.subscriptionBlogData = this.blogData.getAllPostsData().subscribe(res => {
+    this.subscriptionBlogData$ = this.blogData.getAllPostsData().subscribe(res => {
      
       res.sort( (a, b) => {
         return <any>new Date(b.publish_date) - <any>new Date(a.publish_date);
@@ -32,7 +32,7 @@ export class PostListContainerComponent implements OnInit, OnDestroy {
   }
   
   ngOnDestroy(): void {
-    this.subscriptionBlogData.unsubscribe();
+    this.subscriptionBlogData$.unsubscribe();
   }
 
   public onSelectedPostToView(postId: number) {
