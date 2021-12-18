@@ -43,14 +43,8 @@ export class LetsGetCheckedBlogDataService {
 
   public createNewCommentInSinglePost(id:number, comment:models.LetsGetCheckedBlogPostComments ):Observable<models.LetsGetCheckedBlogPostComments> {
     const url = `http://localhost:9000/posts/${id}/comments`;
-
-    const httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
-    });
-
     return this.http
-          .post<models.LetsGetCheckedBlogPostComments>(url, comment, {headers: httpHeaders})
+          .post<models.LetsGetCheckedBlogPostComments>(url, comment)
           .pipe(
             catchError(this.handleError)
           );

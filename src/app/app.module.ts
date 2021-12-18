@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,8 @@ import { WrongRouteComponent } from './components/wrong-route/wrong-route.compon
     ReactiveFormsModule
   ],
   providers: [
-    LetsGetCheckedBlogDataService
+    LetsGetCheckedBlogDataService,
+    DatePipe
   ],
   bootstrap: [AppComponent],
   exports: [

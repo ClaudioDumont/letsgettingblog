@@ -18,13 +18,14 @@
                 </div>
             </div>
         </div>
-
     </ng-container>
     
 
     <h2 class="post-comments__title">Add New Comments</h2>
-        <form [formGroup]="formComments" class="post-comments__add-container">
-            <div>
+        <form [formGroup]="formComments" 
+              class="post-comments__add-container" 
+              (ngSubmit)="addCommentToPost(postId)">
+            <div class="post-comments__add-container__input-container">
                 <input formControlName="user" 
                        type="text"
                        placeholder="Add user name to your commentary"
@@ -37,7 +38,8 @@
                           [ngClass]="{'post-comments__add-container__text-area--invalid': isControlInvalid('commentary')}"></textarea>
             </div>
             <button class="post-comments__add-container__send-button"
-                    (click)="addCommentToPost(postId)"
-                    [disabled]="isControlInvalid('commentary')">Add Commentary</button>
+                    [disabled]="isControlInvalid('commentary')">
+                    Add Commentary
+            </button>
         </form>
 </div>

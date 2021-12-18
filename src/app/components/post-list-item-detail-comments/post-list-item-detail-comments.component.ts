@@ -1,25 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LetsGetCheckedBlogDataService } from '../../services/lets-get-checked-blog-data.service';
 import * as models from '../../models/export';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-list-item-detail-comments',
   templateUrl: './post-list-item-detail-comments.component.html',
   styleUrls: ['./post-list-item-detail-comments.component.scss']
 })
-export class PostListItemDetailCommentsComponent implements OnInit {
+export class PostListItemDetailCommentsComponent implements OnInit, OnDestroy {
   public postItemDetailComments: models.LetsGetCheckedBlogPostComments[] = [];
   public postId:number = 0;
   public user: string = '';
   public commentary: string = '';
   public formComments: FormGroup;
+  private subscriptionCommentsData: Subscription = new Subscription;
+  private subscriptionPostComment: Subscription = new Subscription;
 
   constructor(
       private route: ActivatedRoute,
       private blogData: LetsGetCheckedBlogDataService,
-      private formBuilder: FormBuilder
+      private formBuilder: FormBuilder,
+      private datePipe: DatePipe
     ) {
 
       this.postId = this.route.snapshot.params.postId;
@@ -36,27 +41,35 @@ export class PostListItemDetailCommentsComponent implements OnInit {
     this.getCommentsData();
   }
 
+  ngOnDestroy(): void {
+    this.subscriptionPostComment.unsubscribe();
+    this.subscriptionCommentsData.unsubscribe();
+  }
+
   private getCommentsData() {
-    this.blogData.getAllCommentsSinglePostData(this.postId).subscribe(res => {
+   this.subscriptionCommentsData = this.blogData.getAllCommentsSinglePostData(this.postId).subscribe(res => {
       this.postItemDetailComments = res;
     });
   }
 
-  private getLastCommentId() {
-    return this.postItemDetailComments.reduce((acc, item) => acc = acc > item.id ? acc : item.id, 0) + 1;
-  }
-
   public addCommentToPost(id:number) {
+
+    let postDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+    
     const comment = {
       content: this.formComments.get('commentary')?.value,
-      date: String(new Date().getDate),
-      id: this.getLastCommentId(),
+      date: postDate,
       parent_id: null,
       postId: id,
-      user: this.formComments.get('user')?.value
+      user: !!this.formComments.get('user')?.value ? this.formComments.get('user')?.value : 'Anonymous User'
     }
-
-    this.blogData.createNewCommentInSinglePost(id, comment);
+    
+    this.subscriptionPostComment = this.blogData.createNewCommentInSinglePost(id, comment).subscribe((response) => {
+      if(!!response) {
+        this.getCommentsData();
+        this.formComments.reset();
+      }
+    });
 
   }
 
